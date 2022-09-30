@@ -42,9 +42,14 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
+        $name = $data['name'];
+        $exName = explode(" ", $name);
+        $strtoLowerName = strtolower($exName[0]);
+        $username = $strtoLowerName . rand(100, 1000);
+
         return User::create([
             'name' => $data['name'],
-            'username' => strtolower($data['name']),
+            'username' => $username,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
