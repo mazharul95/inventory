@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//product route
+Route::resource('products', ProductController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//end product route
 
 Auth::routes();
 
